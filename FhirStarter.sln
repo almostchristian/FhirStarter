@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FhirStarter", "FhirStarter\FhirStarter\FhirStarter.csproj", "{4708F959-8750-4FDF-9BC2-8FEABB35A8C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FhirStarter.IntegrationTests", "FhirStarter\FhirStarter.IntegrationTests\FhirStarter.IntegrationTests.csproj", "{89F23725-8CBC-4AC0-8D9F-5F5694FEA91A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4708F959-8750-4FDF-9BC2-8FEABB35A8C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4708F959-8750-4FDF-9BC2-8FEABB35A8C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4708F959-8750-4FDF-9BC2-8FEABB35A8C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4708F959-8750-4FDF-9BC2-8FEABB35A8C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F23725-8CBC-4AC0-8D9F-5F5694FEA91A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F23725-8CBC-4AC0-8D9F-5F5694FEA91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F23725-8CBC-4AC0-8D9F-5F5694FEA91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F23725-8CBC-4AC0-8D9F-5F5694FEA91A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF298970-1F4C-44FB-8217-01B53FA75FFF}
+	EndGlobalSection
+EndGlobal

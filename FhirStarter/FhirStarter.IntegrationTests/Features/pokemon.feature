@@ -16,6 +16,14 @@ Scenario: Reading a newly created Pokemon returns exactly the same Pokemon
         | primaryType | water | code     |
     And createdPkmn and readPkmn are exactly the same
 
+Scenario: Creating a Pokemon with an invalid type returns 422 status code
+    When creating from Samples/Pokemon.json with data as createdPkmn
+        | Path        | Value  | FhirType |
+        | primaryType | waterx | code     |
+    Then createdPkmn is a Fhir OperationOutcome with data
+        | Path        | Value  | FhirType |
+        | statusCode  | 422    |          |
+
 Scenario: Searching for fire type Pokemon returns all fire type Pokemon
     Given a Resource is created from Samples/Pokemon.json with data as charmander
         | Path          | Value      | FhirType |

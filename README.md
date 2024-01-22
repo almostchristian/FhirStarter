@@ -35,7 +35,7 @@ Modify FhirStarter.csproj to add the source generator nuget package.
 <PackageReference Include="Synapxe.Fhir.CodeGeneration" Version="1.0.0-*" />
 ```
 
-### Create a partial class for the Pokemon reosource
+### Create a partial class for the Pokemon resource
 
 ```csharp
 [GeneratedFhir("Conformance/Pokemon.StructureDefinition.json",
@@ -65,35 +65,37 @@ builder.AddFhirEngineServer()
 }
 ```
 
-#### Update the Structure Definition
-Add Pokemon as a resource in the `Conformance/structure-definition.json` file.
+#### Update the Capability Statement to add the Pokemon resource
+Add Pokemon as a resource in the `Conformance/capability-statement.json` file.
 
 ```json
-{
-    "type": "Pokemon",
-    "documentation": "A Pokemon resource.",
-    "interaction": [
+"resource":[
     {
-        "code": "read",
-        "documentation": "Returns the Pokemon."
-    },
-    {
-        "code": "create",
-        "documentation": "Creates a Pokemon."
-    },
-    {
-        "code": "search-type",
-        "documentation": "Searches the Pokemon."
-    }
-    ],
-    "searchParam": [
+        "type": "Pokemon",
+        "documentation": "A Pokemon resource.",
+        "interaction": [
         {
-            "name": "type",
-            "type": "string",
-            "definition": "SearchParameter/Pokemon-type",
-            "documentation": "Type of the Pokemon"
+            "code": "read",
+            "documentation": "Returns the Pokemon."
+        },
+        {
+            "code": "create",
+            "documentation": "Creates a Pokemon."
+        },
+        {
+            "code": "search-type",
+            "documentation": "Searches the Pokemon."
         }
-    ],
-    "versioning": "versioned"
-}
+        ],
+        "searchParam": [
+            {
+                "name": "type",
+                "type": "string",
+                "definition": "SearchParameter/Pokemon-type",
+                "documentation": "Type of the Pokemon"
+            }
+        ],
+        "versioning": "versioned"
+    }
+]
 ```

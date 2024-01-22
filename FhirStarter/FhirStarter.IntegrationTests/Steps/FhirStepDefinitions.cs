@@ -29,7 +29,7 @@ namespace FhirStarter.IntegrationTests.Steps
         {
             this.scenarioContext = scenarioContext;
             this.webApp = webApp;
-            patchService = new PatchService(null, new FhirPathCompiler());
+            patchService = new PatchService(new FhirPathCompiler());
         }
 
         [StepArgumentTransformation]

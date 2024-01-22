@@ -2,8 +2,6 @@
 // Copyright (c) Integrated Health Information Systems Pte Ltd. All rights reserved.
 // -------------------------------------------------------------------------------------------------
 
-using CorrelationId;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -27,7 +25,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHsts()
-    .UseCorrelationId()
     .UseRouting()
     .UseAuthentication()
     .UseAuthorization()

@@ -85,11 +85,11 @@ Scenario: Updating a newly created appointment with an invalid cancellation reas
         | status            | cancelled | code            |
         | cancelationReason | xyz       | CodeableConcept |
     Then updatedAppt is a Fhir OperationOutcome with data
-        | Path                  | Value                                                                                                  | FhirType |
-        | statusCode            | 422                                                                                                    |          |
-        | issue[0].severity     | error                                                                                                  | code     |
-        | issue[0].code         | code-invalid                                                                                           | code     |
-        | issue[0].details.text | Code 'xyz' does not exist in valueset 'http://sypnapxe.sg/fhir/ValueSet/appointmentCancellationReason' | code     |
+        | Path                  | Value                                                                                                                       | FhirType |
+        | statusCode            | 422                                                                                                                         |          |
+        | issue[0].severity     | error                                                                                                                       | code     |
+        | issue[0].code         | code-invalid                                                                                                                | code     |
+        | issue[0].details.text | Code 'xyz' does not exist in the value set 'Care Programs' (http://sypnapxe.sg/fhir/ValueSet/appointmentCancellationReason) | string   |
 
 Scenario: Creating an appointment where same participant is in a different appointment with the same schedule returns 422 status code
     Given a Resource is created from Samples/Appointment.json with data as existingAppt
@@ -124,11 +124,11 @@ Scenario: Cancelling an appointment with an invalid cancellation reason returns 
         | Name               | Value          | FhirType        |
         | cancellationReason | abc | CodeableConcept |
     Then cancellationResponse is a Fhir OperationOutcome with data
-        | Path                  | Value                                                                                                  | FhirType |
-        | statusCode            | 422                                                                                                    |          |
-        | issue[0].severity     | error                                                                                                  | code     |
-        | issue[0].code         | code-invalid                                                                                           | code     |
-        | issue[0].details.text | Code 'abc' does not exist in valueset 'http://sypnapxe.sg/fhir/ValueSet/appointmentCancellationReason' | code     |
+        | Path                  | Value                                                                                                                       | FhirType |
+        | statusCode            | 422                                                                                                                         |          |
+        | issue[0].severity     | error                                                                                                                       | code     |
+        | issue[0].code         | code-invalid                                                                                                                | code     |
+        | issue[0].details.text | Code 'abc' does not exist in the value set 'Care Programs' (http://sypnapxe.sg/fhir/ValueSet/appointmentCancellationReason) | string   |
 
 Scenario: Cancelling an appointment returns appointment with cancelled status and incremented version
     Given a Resource is created from Samples/Appointment.json as createdAppointment

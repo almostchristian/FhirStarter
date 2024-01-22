@@ -10,10 +10,10 @@
     <ItemGroup>
         <InternalsVisibleTo Include="FhirStarter.IntegrationTests" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-        <PackageReference Include="Ihis.FhirEngine.WebApi.Extensions.Swashbuckle" Version="2.2.3" />
-        <PackageReference Include="Ihis.FhirEngine.WebApi.R4" Version="2.2.3" />
-        <PackageReference Include="Ihis.FhirEngine.Data.SqlServer" Version="2.2.3" />
-        <PackageReference Include="Ihis.FhirEngine.Data.SqlServer.Extensions.Migration" Version="2.2.3" />
+        <PackageReference Include="Ihis.FhirEngine.WebApi.Extensions.Swashbuckle" Version="3.0.1" />
+        <PackageReference Include="Ihis.FhirEngine.WebApi.R4" Version="3.0.1" />
+        <PackageReference Include="Ihis.FhirEngine.Data.SqlServer" Version="3.0.1" />
+        <PackageReference Include="Ihis.FhirEngine.Data.SqlServer.Extensions.Migration" Version="3.0.1" />
     </ItemGroup>
 
 </Project>

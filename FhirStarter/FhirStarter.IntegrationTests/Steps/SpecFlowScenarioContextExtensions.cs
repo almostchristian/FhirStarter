@@ -3,6 +3,7 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
 using Hl7.FhirPath;
+using Ihis.FhirEngine.Client;
 using Ihis.FhirEngine.Core.Constants;
 using Ihis.FhirEngine.Core.Data;
 using Ihis.FhirEngine.Data.Testing;
@@ -32,11 +33,11 @@ namespace FhirStarter.IntegrationTests.Steps
             return fromTags ?? context.Get<string>(key);
         }
 
-        public static FhirClient GetFhirClient(this ScenarioContext context)
+        public static FhirHttpClient GetFhirClient(this ScenarioContext context)
         {
-            var name = context.GetRequestedName(nameof(FhirClient));
+            var name = context.GetRequestedName(nameof(FhirHttpClient));
 
-            var client = context.Get<FhirClient>($"{nameof(FhirClient)}:{name}");
+            var client = context.Get<FhirHttpClient>($"{nameof(FhirHttpClient)}:{name}");
 
             return client;
         }
@@ -50,12 +51,12 @@ namespace FhirStarter.IntegrationTests.Steps
             return client;
         }
 
-        public static void SetFhirClient(this ScenarioContext context, FhirClient client, string name, bool setAsCurrent = true)
+        public static void SetFhirClient(this ScenarioContext context, FhirHttpClient client, string name, bool setAsCurrent = true)
         {
-            context.Set(client, $"{nameof(FhirClient)}:{name}");
+            context.Set(client, $"{nameof(FhirHttpClient)}:{name}");
             if (setAsCurrent)
             {
-                context.Set(name, nameof(FhirClient));
+                context.Set(name, nameof(FhirHttpClient));
             }
         }
 
@@ -279,11 +280,11 @@ namespace FhirStarter.IntegrationTests.Steps
 
             return type switch
             {
-                "Quantity" => parameters.TryGetQuantity("value", out var quantity) ? quantity : null,
-                "Identifier" => parameters.TryGetIdentifier("value", out var identifier) ? identifier : null,
-                "Coding" => parameters.TryGetCoding("value", out var coding) ? coding : null,
-                "CodeableConcept" => parameters.TryGetCodeableConcept("value", out var codeableConcept) ? codeableConcept : null,
-                "Reference" => parameters.TryGetReference("value", out var reference) ? reference : null,
+                "Quantity" => parameters.TryGetValue<Quantity>("value", out var quantity) ? quantity : null,
+                "Identifier" => parameters.TryGetValue<Identifier>("value", out var identifier) ? identifier : null,
+                "Coding" => parameters.TryGetValue<Coding>("value", out var coding) ? coding : null,
+                "CodeableConcept" => parameters.TryGetValue<CodeableConcept>("value", out var codeableConcept) ? codeableConcept : null,
+                "Reference" => parameters.TryGetValue<ResourceReference>("value", out var reference) ? reference : null,
                 "boolean" => new FhirBoolean(bool.Parse(value)),
                 "uri" => new FhirUri(value),
                 "canonical" => new Canonical(value),

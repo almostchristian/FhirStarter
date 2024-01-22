@@ -15,7 +15,7 @@ dotnet nuget add source https://nexus.ihis-hip.sg/repository/ihis-nuget/ -n nexu
 Install the template using the command below. This will install the latest available version of the template.
 
 ```cmd
-dotnet new install Ihis.FhirEngine.WebApiTemplate.CSharp
+dotnet new install Ihis.FhirEngine.WebApiTemplate.CSharp::3.0.1
 ```
 
 Confirm that the template is installed using the command below:
@@ -28,3 +28,70 @@ Template Name                                 Short Name           Language    T
 FhirEngine Web Api                            fhirengine-webapi    [C#]        Web/WebAPI/FHIR/
 ```
 
+### Steps
+### Add source generator nuget package
+Modify FhirStarter.csproj to add the source generator nuget package.
+```xml
+<PackageReference Include="Synapxe.Fhir.CodeGeneration" Version="1.0.0-*" />
+```
+
+### Create a partial class for the Pokemon reosource
+
+```csharp
+[GeneratedFhir("Conformance/Pokemon.StructureDefinition.json",
+    SharedTerminologyResources = new string[] { "Conformance/PokemonType.ValueSet.json" })]
+public partial class Pokemon
+{
+}
+```
+
+### Register the Pokemon custom resource
+The Pokemon custom resource can be registered either by adding the registration method in Program.cs or through configuration.
+
+```csharp
+builder.AddFhirEngineServer()
+    .AddCustomResource<Pokemon>();
+```
+
+```json
+{
+  "FhirEngine": {
+	"CustomResources": [
+	  "FhirStarter.CustomResource.Pokemon"
+	]
+  }
+}
+```
+
+#### Update the Structure Definition
+Add Pokemon as a resource in the `Conformance/structure-definition.json` file.
+
+```json
+{
+    "type": "Pokemon",
+    "documentation": "A Pokemon resource.",
+    "interaction": [
+    {
+        "code": "read",
+        "documentation": "Returns the Pokemon."
+    },
+    {
+        "code": "create",
+        "documentation": "Creates a Pokemon."
+    },
+    {
+        "code": "search-type",
+        "documentation": "Searches the Pokemon."
+    }
+    ],
+    "searchParam": [
+        {
+            "name": "type",
+            "type": "string",
+            "definition": "SearchParameter/Pokemon-type",
+            "documentation": "Type of the Pokemon"
+        }
+    ],
+    "versioning": "versioned"
+}
+```

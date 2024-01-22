@@ -61,7 +61,40 @@
             }
           ],
           "versioning": "no-version"
+        },{
+          "type": "Pokemon",
+          "documentation": "A Pokemon resource.",
+          "interaction": [
+            {
+              "code": "read",
+              "documentation": "Returns the Pokemon."
+            },
+            {
+              "code": "create",
+              "documentation": "Creates a Pokemon."
+            },
+            {
+              "code": "search-type",
+              "documentation": "Searches the Pokemon."
+            }
+          ],
+          "searchParam": [
+            {
+              "name": "name",
+              "type": "string",
+              "definition": "SearchParameter/Pokemon-name",
+              "documentation": "Name of the Pokemon"
+            },
+            {
+              "name": "type",
+              "type": "token",
+              "definition": "SearchParameter/Pokemon-type",
+              "documentation": "Type of the Pokemon"
+            }
+          ],
+          "versioning": "versioned"
         },
+
         {
           "type": "Appointment",
           "profile": "StructureDefinition/Appointment-custom",

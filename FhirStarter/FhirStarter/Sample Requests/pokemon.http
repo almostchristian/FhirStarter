@@ -10,24 +10,23 @@ Content-Type: application/fhir+json
 
 {
   "resourceType": "Pokemon",
-  "name": "Charizard",
-  "nationalDexNo": 3,
-  "primaryType": "fire",
-  "secondaryType": "flying"
+  "name": "Squirtle",
+  "nationalDexNo": 4,
+  "secondaryType": "water"
 }
 
 ### Get Pokemon Request:
-@pkmnId = {{createPokemonRequest.response.body.$.id}}
+@pkmnId = 7FE63223039147F5AB94ECFC8E6CC5AB
 # @name getPokemonRequest
 GET {{baseUrl}}/Pokemon/{{pkmnId}}
 X-Ihis-SourceApplication: {{applicationId}}
 
 ### Search Pokemon by type Request:
 # @name searchPokemonByTypeRequest
-GET {{baseUrl}}/Pokemon?type=flying
+GET {{baseUrl}}/Pokemon?type=
 X-Ihis-SourceApplication: {{applicationId}}
 
 ### Search Pokemon by name Request:
 # @name searchPokemonByNameRequest
-GET {{baseUrl}}/Pokemon?name:contains=zard
+GET {{baseUrl}}/Pokemon?name:exact=Charizard
 X-Ihis-SourceApplication: {{applicationId}}

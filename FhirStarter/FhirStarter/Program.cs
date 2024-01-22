@@ -2,6 +2,9 @@
 // Copyright (c) Integrated Health Information Systems Pte Ltd. All rights reserved.
 // -------------------------------------------------------------------------------------------------
 
+using FhirStarter.CustomResources;
+using FhirStarter.Handlers;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -9,8 +12,15 @@ builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen();
 
+builder.Services.AddHttpClient<PokemonDataFhirHandler>()
+    .ConfigureHttpClient(client =>
+    {
+        client.BaseAddress = new Uri("https://pokeapi.co/api/v2/");
+    });
+
 // Reads the 'FhirEngine' configuration section to add services
-builder.AddFhirEngineServer();
+builder.AddFhirEngineServer()
+    .AddCustomResource<Pokemon>();
 
 var app = builder.Build();
 

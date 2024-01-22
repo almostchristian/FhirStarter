@@ -56,9 +56,11 @@ builder.AddFhirEngineServer()
 ```json
 {
   "FhirEngine": {
-	"CustomResources": [
-	  "FhirStarter.CustomResource.Pokemon"
-	]
+    "SystemPlugins":{
+	    "CustomResources": [
+	      "FhirStarter.CustomResource.Pokemon"
+	    ]
+    }
   }
 }
 ```

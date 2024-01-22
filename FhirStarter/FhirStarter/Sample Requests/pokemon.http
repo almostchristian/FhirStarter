@@ -26,3 +26,8 @@ X-Ihis-SourceApplication: {{applicationId}}
 # @name searchPokemonByTypeRequest
 GET {{baseUrl}}/Pokemon?type=flying
 X-Ihis-SourceApplication: {{applicationId}}
+
+### Search Pokemon by name Request:
+# @name searchPokemonByNameRequest
+GET {{baseUrl}}/Pokemon?name:contains=zard
+X-Ihis-SourceApplication: {{applicationId}}

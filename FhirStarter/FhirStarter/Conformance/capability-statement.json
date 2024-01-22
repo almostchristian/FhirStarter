@@ -129,7 +129,19 @@
               "definition": "http://sypnapxe.sg/fhir/OperationDefinition/Appointment-cancel"
             }
           ]
+        }
+      ],
+      "operation": [
+        {
+          "name": "reindex-get",
+          "documentation": "Retrieves the reindex status.",
+          "definition": "OperationDefinition/reindex-get"
         },
+        {
+          "name": "reindex",
+          "documentation": "Reindexes the NoSQL Repository.",
+          "definition": "OperationDefinition/reindex"
+        }
       ]
     }
   ]

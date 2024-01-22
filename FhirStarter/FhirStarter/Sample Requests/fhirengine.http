@@ -8,3 +8,18 @@ X-Ihis-SourceApplication: {{applicationId}}
       
 ### Health Check Request:
 GET {{baseUrl}}/health
+ 
+### Reindex Request:
+POST {{baseUrl}}/$reindex
+X-Ihis-SourceApplication: {{applicationId}}
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    {
+      "name": "force",
+      "valueBoolean": true
+    }
+  ]
+}

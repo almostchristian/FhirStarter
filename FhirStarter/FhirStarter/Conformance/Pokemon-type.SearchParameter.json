@@ -32,7 +32,7 @@
       ]
     }
   ],
-  "description": "Who has accepted invitation",
+  "description": "What is the Pokemon's primary or secondary type.",
   "code": "type",
   "base": [ "Pokemon" ],
   "type": "token",

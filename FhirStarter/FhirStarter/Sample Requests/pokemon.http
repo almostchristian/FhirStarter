@@ -11,7 +11,7 @@ Content-Type: application/fhir+json
 {
   "resourceType": "Pokemon",
   "name": "Charizard",
-  "nationalDexNo": 7,
+  "nationalDexNo": 3,
   "primaryType": "fire",
   "secondaryType": "flying"
 }

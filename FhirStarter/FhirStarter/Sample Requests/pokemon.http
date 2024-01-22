@@ -1,0 +1,28 @@
+@baseUrl=https://localhost:5001
+@applicationId=test-app
+
+### Create Pokemon Request:
+# @name createPokemonRequest
+
+POST {{baseUrl}}/Pokemon
+X-Ihis-SourceApplication: {{applicationId}}
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Pokemon",
+  "name": "Charizard",
+  "nationalDexNo": 7,
+  "primaryType": "fire",
+  "secondaryType": "flying"
+}
+
+### Get Pokemon Request:
+@pkmnId = {{createPokemonRequest.response.body.$.id}}
+# @name getPokemonRequest
+GET {{baseUrl}}/Pokemon/{{pkmnId}}
+X-Ihis-SourceApplication: {{applicationId}}
+
+### Search Pokemon by type Request:
+# @name searchPokemonByTypeRequest
+GET {{baseUrl}}/Pokemon?type=flying
+X-Ihis-SourceApplication: {{applicationId}}

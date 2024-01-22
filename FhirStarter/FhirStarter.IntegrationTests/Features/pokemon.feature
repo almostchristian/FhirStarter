@@ -24,6 +24,14 @@ Scenario: Creating a Pokemon with an invalid type returns 422 status code
         | Path        | Value  | FhirType |
         | statusCode  | 422    |          |
 
+Scenario: Creating a Pokemon with an invalid species name returns 422 status code
+    When creating from Samples/Pokemon.json with data as createdPkmn
+        | Path | Value  | FhirType |
+        | name | Agamon | string     |
+    Then createdPkmn is a Fhir OperationOutcome with data
+        | Path        | Value  | FhirType |
+        | statusCode  | 422    |          |
+
 Scenario: Searching for fire type Pokemon returns all fire type Pokemon
     Given a Resource is created from Samples/Pokemon.json with data as charmander
         | Path          | Value      | FhirType |
